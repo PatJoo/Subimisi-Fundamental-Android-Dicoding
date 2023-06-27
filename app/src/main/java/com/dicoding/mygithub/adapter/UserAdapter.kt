@@ -8,9 +8,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.dicoding.mygithub.model.User
 import com.dicoding.mygithub.databinding.ItemUserBinding
 
-class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
-
-    private val list = mutableListOf<User>()
+class UserAdapter(private val list: MutableList<User> = mutableListOf()) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
@@ -19,8 +17,8 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     }
 
     fun setList(users: MutableList<User>){
-        list.clear()
-        list.addAll(users)
+        this.list.clear()
+        this.list.addAll(users)
         notifyDataSetChanged()
     }
 
